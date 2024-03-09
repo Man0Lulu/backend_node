@@ -4,8 +4,9 @@ const app = express();
 
 app.use(express.json());
 
-app.use(function(req, res){
+app.use(function(req, res, next){
     console.log("Data", new Date());
+    next()
 });
 
 app.get("/", function(req, res){
@@ -35,3 +36,5 @@ app.put("/", function(req, res){
 app.listen(3000, function() {
     console.log("API está on!");
 });
+
+module.exports = app;
