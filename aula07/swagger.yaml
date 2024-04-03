@@ -1,0 +1,29 @@
+openapi: 3.0.0
+info:
+  title: MINHA API REST
+  description: Uma API REST desenvolvida com express.
+  version: 0.1.0
+servers:
+  - url: http://localhost:3000
+    description: Ambiente de desenvolvimento
+tags:
+  - name: produtos
+paths:
+  /produtos:
+    get:
+      tags:
+        - produto
+    post:
+      tags:
+        - produto
+  /produtos/{produtosId}:
+    get:
+      tags:
+        - produto
+    put:
+      tags:
+        - produto
+    delete:
+      tags:
+        - produto
+components:
