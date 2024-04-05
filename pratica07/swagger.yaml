@@ -1,0 +1,123 @@
+openapi: 3.0.0
+info:
+  title: MINHA API REST
+  description: Uma API REST desenvolvida com Express.
+  version: 0.1.0
+servers:
+  - url: http://localhost:3000
+    description: Ambiente de desenvolvimento
+tags:
+  - name: produtos
+paths:
+  /produtos:
+    get:
+      tags:
+        - produtos
+    post:
+      tags:
+        - produtos
+      requestBody:
+        description: Um JSON com dados do novo produto
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                nome:
+                  type: string
+                preco:
+                  type: number
+      responses:
+      201:
+        description: Produto criado com sucesso
+        content:
+          application/json:
+              schema:
+                type: object
+              properties:
+                id:
+                type: integer
+              nome:
+                type: string
+              preco:
+                type: number
+      422:
+      description: Nome e preco são obrigatórios
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+                msg:
+                  type: string
+  /produtos/{produtoId}:
+    get:
+      tags:
+        - produtos
+    put:
+      tags:
+        - produtos
+      parameters:
+        - in: path
+          name: produtoId
+          type: integer
+          required: true
+          description: ID do produto a ser atualizado
+      requestBody:
+        content:
+          application/json:
+            schema:
+            type: object
+          properties:
+            nome:
+            type: string
+          preco:
+            type: number
+      responses:
+        200:
+          description: Produto atualizado com sucesso
+          content:
+            application/json:
+              schema:
+                type: object
+              properties:
+                id:
+                  type: integer
+                nome:
+                  type: string
+                preco:
+                  type: number
+        404:
+          description: Produto não encontrado
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                msg:
+                  type: string
+        422:
+          description: Nome e preco são obrigatórios
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                msg:
+                  type: string
+    delete:
+      tags:
+        - produtos
+components:
+  schemas:
+    Produto:
+    type: object
+    properties:
+      id:
+        type: integer
+      nome:
+        type: string
+      preco:
+       type: number
+
