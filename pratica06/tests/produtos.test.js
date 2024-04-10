@@ -43,8 +43,8 @@ describe("Teste da API Produtos", function () {
       .send({ nome: "uva verde", preco: 18.0 });
     expect(response.status).toBe(200);
     expect(response.body).toHaveProperty("id", 1);
-    expect(response.body).toHaveProperty("nome", "uva");
-    expect(response.body).toHaveProperty("preco", 20.0);
+    expect(response.body).toHaveProperty("nome", "uva verde");
+    expect(response.body).toHaveProperty("preco", 18.0);
   });
   test("DELETE /produtos/1 com o status 204 e um conteudo JSON ", async () => {
     const response = await request.delete("/produtos/1");
