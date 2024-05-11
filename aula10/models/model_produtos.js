@@ -3,11 +3,11 @@ const mongoose = require('mongoose');
 const produtoSchema = new mongoose.Schema({
     nome: {
         type: String,
-        required: false
+        required: true
     },
     preco: {
         type: Number,
-        required: false
+        required: true
     },
     
 });

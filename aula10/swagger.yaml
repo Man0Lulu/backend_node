@@ -3,6 +3,52 @@ info:
   title: API Loja Virtual
   version: 0.0.1
 tags:
- - produtos
+  - produtos
 paths:
+  /produtos:
+    post:
+      tags:
+        - produtos
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Produto'
+      responses:
+        201:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Produto'
+        422:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Mensagem'
+    get:
+      tags:
+        - produtos
+      responses:
+        200:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ArrayOfProdutos'
 components:
+schemas:
+    ArrayOfProdutos:
+      type: array
+      items:
+        $ref: '#/components/schemas/Produto'
+    Produto:
+      type: object
+      properties:
+      nome:
+        type: string
+      preco:
+        type: number
+    Mensagem:
+      type: object
+      propeties:
+        msg:
+          type: object

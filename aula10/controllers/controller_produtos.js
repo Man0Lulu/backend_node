@@ -15,4 +15,9 @@ async function criar(req, res){
     res.status(201).json({});
 }
 
-module.exports = { validarDados, criar };
+async function obterTodos(req, res){
+    const produtos = await Produto.find({});
+    res.json({});
+}
+
+module.exports = { validarDados, criar, obterTodos };
