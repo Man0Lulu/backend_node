@@ -34,8 +34,27 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ArrayOfProdutos'
+  /produtos/{id}:
+    get:
+      tags:
+        - produtos
+      parameters:
+        - in: path
+          type: string
+          name: id
+      responses:
+        200:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Produto'
+        404:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Mensagem'
 components:
-schemas:
+  schemas:
     ArrayOfProdutos:
       type: array
       items:
@@ -43,12 +62,12 @@ schemas:
     Produto:
       type: object
       properties:
-      nome:
-        type: string
-      preco:
-        type: number
+        nome:
+          type: string
+        preco:
+          type: number
     Mensagem:
       type: object
-      propeties:
+      properties:
         msg:
-          type: object
+          type: string
