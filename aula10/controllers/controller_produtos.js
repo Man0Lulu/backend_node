@@ -31,7 +31,7 @@ async function buscarPeloId(req, res, next) {
       res.status(404).json({ msg: "Produto nao encontado" });
     }
   } catch (err) {
-    res.status(404).json({ msg: "Produto nao encontado" });
+    res.status(400).json({ msg: "Id invalido" });
   }
 }
 async function obter(req, res) {
@@ -40,4 +40,24 @@ async function obter(req, res) {
   res.json(produto);
 }
 
-module.exports = { validarDados, criar, obterTodos, buscarPeloId, obter };
+async function atualizar(req, res) {
+  const id = new mongoose.Types.ObjectId(req.params.id);
+  const produto = await Produto.findOneAndUpdate({ _id: id }, req.body);
+  res.json(produto);
+}
+
+async function remover(req, res) {
+  const id = new mongoose.Types.ObjectId(req.params.id);
+  await Produto.findOneAndDelete({ _id: id });
+  res.status(204).end();
+}
+
+module.exports = {
+  validarDados,
+  criar,
+  obterTodos,
+  buscarPeloId,
+  obter,
+  atualizar,
+  remover,
+};
