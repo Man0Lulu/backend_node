@@ -1,0 +1,11 @@
+openapi: 3.0.0
+info:
+  title: API Loja Virtual
+  version: 0.1
+tags:
+  - name: produtos
+paths:
+  /produtos:
+  /produtos/{id}:
+components:
+  schemas:
