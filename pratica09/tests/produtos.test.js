@@ -16,6 +16,6 @@ describe('POST /produtos', () => {
     .send({"nome": "uva", "preco": 20.0})
     expect(response.status).toBe(201);
     expect(response.body).toHaveProperty('nome','uva')
-    id = response.body._id.toStringfef34
+    id = response.body._id.toString()
   })
 })
