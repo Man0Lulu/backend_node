@@ -9,10 +9,11 @@ const RouterProdutos = require('./routes/produtos');
 
 mongoose.connect(process.env.MONGODB_URL);
 
-app.use('/produtos', RouterProdutos)
+
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use('/api-docs', Apidocs)
+app.use('/produtos', RouterProdutos)
 module.exports = app;
